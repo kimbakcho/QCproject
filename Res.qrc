@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/icon">
+        <file>icon/calendar.png</file>
+        <file>icon/play-button.png</file>
+        <file>icon/settings-4.png</file>
+        <file>icon/thermometer.png</file>
+        <file>icon/play.png</file>
+        <file>icon/download.png</file>
+        <file>icon/search.png</file>
+    </qresource>
+    <qresource prefix="/qml">
+        <file>QMLtest.qml</file>
+    </qresource>
+</RCC>
