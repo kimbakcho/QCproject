@@ -26,7 +26,7 @@
          <x>0</x>
          <y>0</y>
          <width>1186</width>
-         <height>714</height>
+         <height>712</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
@@ -114,7 +114,7 @@
             <item row="1" column="0">
              <layout class="QGridLayout" name="gridLayout_6" rowstretch="0,0" columnstretch="0">
               <item row="0" column="0">
-               <widget class="QComboBox" name="comboBox"/>
+               <widget class="QComboBox" name="machinenamelistbox"/>
               </item>
               <item row="1" column="0">
                <widget class="QPushButton" name="pushButton_2">
@@ -1978,7 +1978,7 @@ QComboBox::down-arrow {
      <x>0</x>
      <y>0</y>
      <width>1206</width>
-     <height>20</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -1986,7 +1986,7 @@ QComboBox::down-arrow {
      <string>메뉴</string>
     </property>
     <addaction name="action"/>
-    <addaction name="action_2"/>
+    <addaction name="serverset"/>
    </widget>
    <addaction name="menu"/>
   </widget>
@@ -2009,7 +2009,7 @@ QComboBox::down-arrow {
     <string>시작</string>
    </property>
   </action>
-  <action name="action_2">
+  <action name="serverset">
    <property name="icon">
     <iconset>
      <normalon>:/icon/icon/settings-4.png</normalon>

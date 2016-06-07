@@ -3,6 +3,9 @@
 
 #include <QObject>
 #include "mainwindow.h"
+#include "ui_mainwindow.h"
+#include <QSqlDatabase>
+#include <QSqlQuery>
 /*
  *
  *   Tab1 init setting calss
@@ -16,6 +19,9 @@ public:
     explicit Tab1_setting(MainWindow *mw, QObject *parent = 0);
     MainWindow *mw;
     QStringList COMitem1_list;
+    QSqlDatabase remotedb;
+    QSqlDatabase litedb;
+
 
 signals:
 
