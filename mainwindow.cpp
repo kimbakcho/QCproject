@@ -7,7 +7,8 @@ MainWindow::MainWindow(QWidget *parent) :
     MainWindowui(new Ui::MainWindow)
 {
     MainWindowui->setupUi(this);
-    machinenamelistbox_currentIndexChanged = false;
+
+    machinenamelistbox_currentIndexChanged = true;
     mold_name_box_currentIndexChanged = false;
     litesql_init();
     serverwidget = new Serversetwidget();
@@ -16,8 +17,13 @@ MainWindow::MainWindow(QWidget *parent) :
     Tab1_setting *t1_setting;
     t1_setting = new Tab1_setting(this);
 
+    //초반 데이터 생성
+    QSqlQuery loccalquery(litedb);
+    loccalquery.exec("select current_macine_name from systemset");
+    loccalquery.next();
+    MainWindowui->machinenamelistbox->setCurrentText(loccalquery.value("current_macine_name").toString());
 
-    machinenamelistbox_currentIndexChanged = true;
+
     mold_name_box_currentIndexChanged = true;
 }
 
@@ -100,24 +106,25 @@ void MainWindow::on_machinenamelistbox_currentIndexChanged(const QString &arg1)
 
 }
 
-void MainWindow::on_mold_name_box_currentIndexChanged(const QString &arg1)
-{
-    if(!mold_name_box_currentIndexChanged){
-        return;
-    }
-    QSqlQuery litequery1(mdb);
-    QString querytr = QString("update Systeminfo set mold_name = \'%1\' where machine_name = '%2'")
-            .arg(arg1).arg(MainWindowui->machinenamelistbox->currentText());
-    litequery1.exec(querytr);
-
-}
 //사출기 교체후 인터페이스 초기화 작업
 void MainWindow::machine_change_init(QString machinename){
     QSqlQuery litequery1(mdb);
     QString querystr = QString("select * from Systeminfo where machine_name = \'%1\'").arg(machinename);
     litequery1.exec(querystr);
     litequery1.next();
-    MainWindowui->mold_name_box->setCurrentText(litequery1.value("mold_name").toString());
-
+    MainWindowui->mold_name_box->setText(litequery1.value("mold_name").toString());
+    MainWindowui->machine_name_btn->setText(machinename);
+    MainWindowui->item_name_label->setText(litequery1.value("item_name").toString());
+    MainWindowui->item_code_label->setText(litequery1.value("item_code").toString());
+    MainWindowui->works_name_label->setText(litequery1.value("worker").toString());
+    MainWindowui->orders_count_LE->setText(litequery1.value("orders_count").toString());
+    MainWindowui->cycle_time_label->setText(litequery1.value("cycle_time").toString());
+    MainWindowui->cabit_count->setText(litequery1.value("cabity").toString());
+    MainWindowui->object_count_led->display(litequery1.value("object_count").toInt());
+    MainWindowui->production_count_lcd->display(litequery1.value("production_count").toInt());
+    MainWindowui->achievemen_rate_lcd->display(litequery1.value("achievemen_rate").toDouble());
+    MainWindowui->good_count_lcd->display(litequery1.value("good_count").toInt());
+    MainWindowui->poor_count_lcd->display(litequery1.value("poor_count").toInt());
+    MainWindowui->weight_lcd->display(litequery1.value("weight").toDouble());
 
 }

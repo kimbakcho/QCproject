@@ -13,9 +13,6 @@ Tab1_setting::Tab1_setting(MainWindow *mw, QObject *parent) :
     while(query.next()){
           mw->MainWindowui->machinenamelistbox->addItem(query.value("machine_name").toString());
     }
-    loccalquery.exec("select current_macine_name from systemset");
-    loccalquery.next();
-    mw->MainWindowui->machinenamelistbox->setCurrentText(loccalquery.value("current_macine_name").toString());
 
     mw->MainWindowui->T1_funtion1 ->setVisible(false);
     mw->MainWindowui->T1_funtion2->setVisible(false);
@@ -23,16 +20,6 @@ Tab1_setting::Tab1_setting(MainWindow *mw, QObject *parent) :
     mw->MainWindowui->T1_funtion4->setVisible(false);
     mw->MainWindowui->T1_funtion5->setVisible(false);
     mw->MainWindowui->T1_funtion6->setVisible(false);
-
-    query.exec("select mold_name from mold_info");
-    while(query.next()){
-          mw->MainWindowui->mold_name_box->addItem(query.value("mold_name").toString());
-    }
-    QString quertstr = QString("select * from Systeminfo where machine_name = \'%1\'")
-            .arg(mw->MainWindowui->machinenamelistbox->currentText());
-    query.exec(quertstr);
-    query.next();
-    mw->MainWindowui->mold_name_box->setCurrentText(query.value("mold_name").toString());
 
 }
 

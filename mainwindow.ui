@@ -50,7 +50,7 @@
            </font>
           </property>
           <property name="text">
-           <string>PushButton</string>
+           <string>작업 중지</string>
           </property>
          </widget>
         </item>
@@ -74,7 +74,11 @@
            </font>
           </property>
           <property name="text">
-           <string>PushButton</string>
+           <string>작업시작</string>
+          </property>
+          <property name="icon">
+           <iconset resource="Res.qrc">
+            <normaloff>:/icon/icon/play-button.png</normaloff>:/icon/icon/play-button.png</iconset>
           </property>
          </widget>
         </item>
@@ -117,7 +121,7 @@
                <widget class="QComboBox" name="machinenamelistbox"/>
               </item>
               <item row="1" column="0">
-               <widget class="QPushButton" name="pushButton_2">
+               <widget class="QPushButton" name="machine_name_btn">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                   <horstretch>0</horstretch>
@@ -179,6 +183,9 @@
                 <property name="text">
                  <string>작업자</string>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                </widget>
               </item>
               <item row="0" column="2">
@@ -190,30 +197,6 @@
                 </property>
                 <property name="text">
                  <string>품목코드</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QComboBox" name="comboBox_2">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="font">
-                 <font>
-                  <pointsize>14</pointsize>
-                 </font>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="3">
-               <widget class="QLineEdit" name="lineEdit_4">
-                <property name="font">
-                 <font>
-                  <pointsize>14</pointsize>
-                 </font>
                 </property>
                </widget>
               </item>
@@ -239,25 +222,13 @@
                 <property name="text">
                  <string>품목명</string>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                </widget>
               </item>
               <item row="4" column="3">
-               <widget class="QLineEdit" name="lineEdit_10">
-                <property name="font">
-                 <font>
-                  <pointsize>14</pointsize>
-                 </font>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="3">
-               <widget class="QComboBox" name="comboBox_3">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
+               <widget class="QLineEdit" name="orders_count_LE">
                 <property name="font">
                  <font>
                   <pointsize>14</pointsize>
@@ -286,24 +257,6 @@
                 </property>
                 <property name="text">
                  <string>공정시간</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="3">
-               <widget class="QLineEdit" name="lineEdit_8">
-                <property name="font">
-                 <font>
-                  <pointsize>14</pointsize>
-                 </font>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="3">
-               <widget class="QLineEdit" name="lineEdit_12">
-                <property name="font">
-                 <font>
-                  <pointsize>14</pointsize>
-                 </font>
                 </property>
                </widget>
               </item>
@@ -365,245 +318,6 @@
                 </item>
                </layout>
               </item>
-              <item row="1" column="1">
-               <widget class="QComboBox" name="comboBox_4">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="font">
-                 <font>
-                  <pointsize>14</pointsize>
-                 </font>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0" rowspan="3">
-               <widget class="QLabel" name="label_6">
-                <property name="font">
-                 <font>
-                  <pointsize>14</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>금형</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="1" rowspan="3">
-               <widget class="QComboBox" name="mold_name_box">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>450</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="palette">
-                 <palette>
-                  <active>
-                   <colorrole role="WindowText">
-                    <brush brushstyle="SolidPattern">
-                     <color alpha="255">
-                      <red>0</red>
-                      <green>255</green>
-                      <blue>0</blue>
-                     </color>
-                    </brush>
-                   </colorrole>
-                   <colorrole role="Button">
-                    <brush brushstyle="SolidPattern">
-                     <color alpha="255">
-                      <red>0</red>
-                      <green>0</green>
-                      <blue>0</blue>
-                     </color>
-                    </brush>
-                   </colorrole>
-                   <colorrole role="Text">
-                    <brush brushstyle="SolidPattern">
-                     <color alpha="255">
-                      <red>0</red>
-                      <green>255</green>
-                      <blue>0</blue>
-                     </color>
-                    </brush>
-                   </colorrole>
-                   <colorrole role="ButtonText">
-                    <brush brushstyle="SolidPattern">
-                     <color alpha="255">
-                      <red>0</red>
-                      <green>255</green>
-                      <blue>0</blue>
-                     </color>
-                    </brush>
-                   </colorrole>
-                   <colorrole role="Base">
-                    <brush brushstyle="SolidPattern">
-                     <color alpha="255">
-                      <red>0</red>
-                      <green>0</green>
-                      <blue>0</blue>
-                     </color>
-                    </brush>
-                   </colorrole>
-                   <colorrole role="Window">
-                    <brush brushstyle="SolidPattern">
-                     <color alpha="255">
-                      <red>0</red>
-                      <green>0</green>
-                      <blue>0</blue>
-                     </color>
-                    </brush>
-                   </colorrole>
-                  </active>
-                  <inactive>
-                   <colorrole role="WindowText">
-                    <brush brushstyle="SolidPattern">
-                     <color alpha="255">
-                      <red>0</red>
-                      <green>255</green>
-                      <blue>0</blue>
-                     </color>
-                    </brush>
-                   </colorrole>
-                   <colorrole role="Button">
-                    <brush brushstyle="SolidPattern">
-                     <color alpha="255">
-                      <red>0</red>
-                      <green>0</green>
-                      <blue>0</blue>
-                     </color>
-                    </brush>
-                   </colorrole>
-                   <colorrole role="Text">
-                    <brush brushstyle="SolidPattern">
-                     <color alpha="255">
-                      <red>0</red>
-                      <green>255</green>
-                      <blue>0</blue>
-                     </color>
-                    </brush>
-                   </colorrole>
-                   <colorrole role="ButtonText">
-                    <brush brushstyle="SolidPattern">
-                     <color alpha="255">
-                      <red>0</red>
-                      <green>255</green>
-                      <blue>0</blue>
-                     </color>
-                    </brush>
-                   </colorrole>
-                   <colorrole role="Base">
-                    <brush brushstyle="SolidPattern">
-                     <color alpha="255">
-                      <red>0</red>
-                      <green>0</green>
-                      <blue>0</blue>
-                     </color>
-                    </brush>
-                   </colorrole>
-                   <colorrole role="Window">
-                    <brush brushstyle="SolidPattern">
-                     <color alpha="255">
-                      <red>0</red>
-                      <green>0</green>
-                      <blue>0</blue>
-                     </color>
-                    </brush>
-                   </colorrole>
-                  </inactive>
-                  <disabled>
-                   <colorrole role="WindowText">
-                    <brush brushstyle="SolidPattern">
-                     <color alpha="255">
-                      <red>0</red>
-                      <green>255</green>
-                      <blue>0</blue>
-                     </color>
-                    </brush>
-                   </colorrole>
-                   <colorrole role="Button">
-                    <brush brushstyle="SolidPattern">
-                     <color alpha="255">
-                      <red>0</red>
-                      <green>0</green>
-                      <blue>0</blue>
-                     </color>
-                    </brush>
-                   </colorrole>
-                   <colorrole role="Text">
-                    <brush brushstyle="SolidPattern">
-                     <color alpha="255">
-                      <red>0</red>
-                      <green>255</green>
-                      <blue>0</blue>
-                     </color>
-                    </brush>
-                   </colorrole>
-                   <colorrole role="ButtonText">
-                    <brush brushstyle="SolidPattern">
-                     <color alpha="255">
-                      <red>0</red>
-                      <green>255</green>
-                      <blue>0</blue>
-                     </color>
-                    </brush>
-                   </colorrole>
-                   <colorrole role="Base">
-                    <brush brushstyle="SolidPattern">
-                     <color alpha="255">
-                      <red>0</red>
-                      <green>0</green>
-                      <blue>0</blue>
-                     </color>
-                    </brush>
-                   </colorrole>
-                   <colorrole role="Window">
-                    <brush brushstyle="SolidPattern">
-                     <color alpha="255">
-                      <red>0</red>
-                      <green>0</green>
-                      <blue>0</blue>
-                     </color>
-                    </brush>
-                   </colorrole>
-                  </disabled>
-                 </palette>
-                </property>
-                <property name="font">
-                 <font>
-                  <pointsize>28</pointsize>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QComboBox {
-	background:rgb(0, 0, 0);
-	color : rgb(0, 255, 0);
-}
-
-QComboBox::down-arrow {
-	image: url(:/icon/icon/download.png);
-}</string>
-                </property>
-                <property name="currentText">
-                 <string/>
-                </property>
-                <property name="iconSize">
-                 <size>
-                  <width>16</width>
-                  <height>16</height>
-                 </size>
-                </property>
-               </widget>
-              </item>
               <item row="5" column="1">
                <layout class="QHBoxLayout" name="horizontalLayout_2">
                 <item>
@@ -629,12 +343,166 @@ QComboBox::down-arrow {
                 </item>
                </layout>
               </item>
+              <item row="4" column="0">
+               <widget class="QPushButton" name="pushButton_2">
+                <property name="text">
+                 <string>금형설정</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QPushButton" name="pushButton_4">
+                <property name="text">
+                 <string>금형추가</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_6">
+                <property name="font">
+                 <font>
+                  <pointsize>22</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>금형</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <layout class="QHBoxLayout" name="horizontalLayout_3">
+                <item>
+                 <widget class="QLabel" name="works_name_label">
+                  <property name="font">
+                   <font>
+                    <pointsize>15</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>작업자 검색</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_6">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>작업자검색</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="Res.qrc">
+                    <normaloff>:/icon/icon/search.png</normaloff>:/icon/icon/search.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_5">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>작업자추가</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLabel" name="item_name_label">
+                <property name="font">
+                 <font>
+                  <pointsize>15</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>품목 명</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="3">
+               <widget class="QLabel" name="item_code_label">
+                <property name="font">
+                 <font>
+                  <pointsize>15</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>품목코드</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QLabel" name="cycle_time_label">
+                <property name="font">
+                 <font>
+                  <pointsize>18</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>TextLabel</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="QLabel" name="label_18">
+                <property name="text">
+                 <string>TextLabel</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="3">
+               <widget class="QLabel" name="cabit_count">
+                <property name="font">
+                 <font>
+                  <pointsize>15</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>TextLabel</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1" rowspan="3">
+               <widget class="QLineEdit" name="mold_name_box">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>26</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLineEdit {
+	background-color : rgb(0, 0, 0);
+   color : rgb(0, 255, 0);
+}</string>
+                </property>
+                <property name="text">
+                 <string>금형이름</string>
+                </property>
+               </widget>
+              </item>
              </layout>
             </item>
             <item row="2" column="1" rowspan="2" colspan="5">
              <layout class="QGridLayout" name="gridLayout_10">
               <item row="1" column="0">
-               <widget class="QLCDNumber" name="lcdNumber_4">
+               <widget class="QLCDNumber" name="production_count_lcd">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                   <horstretch>0</horstretch>
@@ -857,7 +725,7 @@ QComboBox::down-arrow {
                </widget>
               </item>
               <item row="1" column="1">
-               <widget class="QLCDNumber" name="lcdNumber_3">
+               <widget class="QLCDNumber" name="object_count_led">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                   <horstretch>0</horstretch>
@@ -1008,7 +876,7 @@ QComboBox::down-arrow {
                </widget>
               </item>
               <item row="1" column="2">
-               <widget class="QLCDNumber" name="lcdNumber">
+               <widget class="QLCDNumber" name="achievemen_rate_lcd">
                 <property name="palette">
                  <palette>
                   <active>
@@ -1145,7 +1013,7 @@ QComboBox::down-arrow {
                </widget>
               </item>
               <item row="3" column="1">
-               <widget class="QLCDNumber" name="lcdNumber_5">
+               <widget class="QLCDNumber" name="poor_count_lcd">
                 <property name="palette">
                  <palette>
                   <active>
@@ -1270,7 +1138,7 @@ QComboBox::down-arrow {
                </widget>
               </item>
               <item row="3" column="0">
-               <widget class="QLCDNumber" name="lcdNumber_2">
+               <widget class="QLCDNumber" name="good_count_lcd">
                 <property name="palette">
                  <palette>
                   <active>
@@ -1395,7 +1263,7 @@ QComboBox::down-arrow {
                </widget>
               </item>
               <item row="3" column="2">
-               <widget class="QLCDNumber" name="lcdNumber_6">
+               <widget class="QLCDNumber" name="weight_lcd">
                 <property name="palette">
                  <palette>
                   <active>

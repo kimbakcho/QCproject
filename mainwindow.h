@@ -8,6 +8,7 @@
 
 
 
+
 namespace Ui {
 class MainWindow;
 }
@@ -39,7 +40,6 @@ private slots:
 
     void on_machinenamelistbox_currentIndexChanged(const QString &arg1);
 
-    void on_mold_name_box_currentIndexChanged(const QString &arg1);
 
 private:
 
