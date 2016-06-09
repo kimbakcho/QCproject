@@ -10,7 +10,9 @@
 #include <serversetwidget.h>
 #include <QTimer>
 #include <QComboBox>
+
 #include "ui_temp_moniter1.h"
+#include "temp_moniter1.h"
 namespace Ui {
 class MainWindow;
 }
@@ -26,7 +28,7 @@ public:
     QSqlDatabase litedb;
     Serversetwidget *serverwidget;
     bool machinenamelistbox_currentIndexChanged;
-    bool mold_name_box_currentIndexChanged;
+
     QTimer workstarttimer;
     void litesql_init();
     void remotesql_connect();
@@ -35,7 +37,8 @@ public:
     void machine_change_init(QString machinename);
     void workplantab_loop();
     void tempmonitertab_loop();
-    void tab2_tempnameinit(QComboBox *box);
+
+    void tab2_tempnameinit(Temp_moniter1 * temp_data,int number);
     void tab2_tempdataup(Ui_Temp_moniter1 *temp_moniter);
     ~MainWindow();
 
