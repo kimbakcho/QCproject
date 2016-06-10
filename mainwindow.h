@@ -13,6 +13,7 @@
 
 #include "ui_temp_moniter1.h"
 #include "temp_moniter1.h"
+#include "mold_select_popup.h"
 namespace Ui {
 class MainWindow;
 }
@@ -54,6 +55,11 @@ private slots:
     void on_workstart_btn_clicked();
 
     void workstarttimer_loop();
+
+
+    void on_mold_select_clicked();
+
+    void on_mold_adder_clicked();
 
 private:
 

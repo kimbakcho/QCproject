@@ -343,20 +343,6 @@
                 </item>
                </layout>
               </item>
-              <item row="4" column="0">
-               <widget class="QPushButton" name="pushButton_2">
-                <property name="text">
-                 <string>금형설정</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0">
-               <widget class="QPushButton" name="pushButton_4">
-                <property name="text">
-                 <string>금형추가</string>
-                </property>
-               </widget>
-              </item>
               <item row="2" column="0">
                <widget class="QLabel" name="label_6">
                 <property name="font">
@@ -497,6 +483,13 @@
                 </property>
                 <property name="readOnly">
                  <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0" rowspan="2">
+               <widget class="QPushButton" name="mold_select">
+                <property name="text">
+                 <string>금형설정</string>
                 </property>
                </widget>
               </item>
@@ -1827,6 +1820,13 @@
                <widget class="Temp_moniter1" name="Tab2_temp1" native="true"/>
               </item>
              </layout>
+            </item>
+            <item row="3" column="0">
+             <widget class="QPushButton" name="pushButton_7">
+              <property name="text">
+               <string>온도이름변경</string>
+              </property>
+             </widget>
             </item>
            </layout>
           </widget>

@@ -187,12 +187,12 @@ void MainWindow::tab2_tempnameinit(Temp_moniter1 * temp_data,int number){
     remotequery.next();
 
     if(temp_data->Temp_moniter1ui->comboBox->count() == 0){
-        for(int i=1;i<=15;i++){
+        for(int i=1;i<=21;i++){
             QString temp_str = QString("temp%1_name").arg(i);
             temp_data->Temp_moniter1ui->comboBox->addItem(QIcon(":/icon/icon/thermometer.png"),remotequery.value(temp_str).toString());
         }
     }else {
-         for(int i=0;i<=15;i++){
+         for(int i=1;i<=21;i++){
              QString temp_str = QString("temp%1_name").arg(i);
              temp_data->Temp_moniter1ui->comboBox->setItemText(i-1,remotequery.value(temp_str).toString());
          }
@@ -279,3 +279,13 @@ void MainWindow::tab2_tempdataup(Ui_Temp_moniter1 *temp_moniter){
 
 }
 
+void MainWindow::on_mold_select_clicked()
+{
+    mold_select_popup popup(this);
+    popup.exec();
+}
+
+void MainWindow::on_mold_adder_clicked()
+{
+
+}

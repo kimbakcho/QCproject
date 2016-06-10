@@ -17,17 +17,20 @@ SOURCES += main.cpp\
     tab1_setting.cpp \
     temp_moniter1.cpp \
     tab2_setting.cpp \
-    serversetwidget.cpp
+    serversetwidget.cpp \
+    mold_select_popup.cpp
 
 HEADERS  += mainwindow.h \
     tab1_setting.h \
     temp_moniter1.h \
     tab2_setting.h \
-    serversetwidget.h
+    serversetwidget.h \
+    mold_select_popup.h
 
 FORMS    += mainwindow.ui \
     temp_moniter1.ui \
-    serversetwidget.ui
+    serversetwidget.ui \
+    mold_select_popup.ui
 
 RESOURCES += \
     Res.qrc
