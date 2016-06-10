@@ -213,6 +213,7 @@ void MainWindow::tab2_tempnameinit(Temp_moniter1 * temp_data,int number){
 void MainWindow::on_workstart_btn_clicked()
 {
     workstarttimer.start();
+    workstarttimer_loop();
 }
 
 void MainWindow::workstarttimer_loop(){
@@ -260,15 +261,21 @@ void MainWindow::tab2_tempdataup(Ui_Temp_moniter1 *temp_moniter){
     remotequery.exec(query);
     remotequery.next();
 
-    temp_moniter->real_lcd_number->display(remotequery.value(temp_real_name).toDouble());
-    temp_moniter->setting_btn->setText(remotequery.value(temp_set_name).toString());
-    int setting_value = remotequery.value(temp_set_name).toInt();
-    int up_value =  remotequery.value(temp_up_name).toInt();
-    int down_value =  remotequery.value(temp_down_name).toInt();
+    temp_moniter->real_lcd_number->display(remotequery.value(temp_real_name).toDouble()/10.0);
+    int real_value = remotequery.value(temp_real_name).toInt()/10;
+
+    int setting_value = remotequery.value(temp_set_name).toInt()/10;
+    int up_value =  remotequery.value(temp_up_name).toInt()/10;
+    int down_value =  remotequery.value(temp_down_name).toInt()/10;
     up_value = setting_value + up_value;
     down_value = setting_value-down_value;
+    temp_moniter->setting_btn->setText(QString("%1").arg(setting_value));
+
     temp_moniter->up_btn->setText(QString("%1").arg(up_value));
     temp_moniter->down_btn->setText(QString("%1").arg(down_value));
+    temp_moniter->tempSlider->setMinimum(down_value);
+    temp_moniter->tempSlider->setMaximum(up_value);
+    temp_moniter->tempSlider->setValue(real_value);
 
 }
 
