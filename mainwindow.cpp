@@ -228,7 +228,27 @@ void MainWindow::workstarttimer_loop(){
     }else if(MainWindowui->tabWidget->currentIndex() == TEMPMONITERNTAB){
         tempmonitertab_loop();
     }
+    warning_loop();
+
 }
+void MainWindow::warning_loop(){
+    QSqlQuery remotequery(mdb);
+    QString querystr = QString("select warning_flag from Systeminfo where machine_name = \'%1\'")
+                               .arg(MainWindowui->machinenamelistbox->currentText());
+    remotequery.exec(querystr);
+    remotequery.next();
+    if(remotequery.value("warning_flag").toInt() == 1){
+        if(MainWindowui->scrollArea->styleSheet().compare("") == 0){
+            MainWindowui->scrollArea->setStyleSheet("background-color : rgb(255, 0, 0)");
+        }else {
+            MainWindowui->scrollArea->setStyleSheet("");
+        }
+    }else {
+        MainWindowui->scrollArea->setStyleSheet("");
+    }
+
+}
+
 void MainWindow::workplantab_loop(){
     QSqlQuery remotequery(mdb);
      QString querystr = QString("select * from Systeminfo where machine_name = \'%1\'")

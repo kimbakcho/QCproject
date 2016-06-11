@@ -43,6 +43,8 @@ public:
 
     void tab2_tempnameinit(Temp_moniter1 * temp_data,int number);
     void tab2_tempdataup(Ui_Temp_moniter1 *temp_moniter);
+
+    void warning_loop();
     ~MainWindow();
 
 private slots:
