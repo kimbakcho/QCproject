@@ -1,20 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>mold_select_popup</class>
- <widget class="QDialog" name="mold_select_popup">
+ <class>workmen_select_popup</class>
+ <widget class="QDialog" name="workmen_select_popup">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>575</width>
-    <height>325</height>
+    <width>400</width>
+    <height>300</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="4" column="0">
+   <item row="1" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="add_btn">
+       <property name="text">
+        <string>작업자추가</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="delete_btn">
+       <property name="text">
+        <string>작업자제거</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="0">
+    <widget class="QTableView" name="tableView"/>
+   </item>
+   <item row="3" column="0">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -24,35 +45,7 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="0">
-    <widget class="QCheckBox" name="checkBox">
-     <property name="text">
-      <string>사출기 금형이름으로 하기</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0">
-    <widget class="QTableView" name="tableView"/>
-   </item>
    <item row="2" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QPushButton" name="mold_addbtn">
-       <property name="text">
-        <string>금형추가</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="mold_deletebtn">
-       <property name="text">
-        <string>제거</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="3" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <widget class="QLineEdit" name="search_edit"/>
@@ -79,7 +72,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>mold_select_popup</receiver>
+   <receiver>workmen_select_popup</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -95,7 +88,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>mold_select_popup</receiver>
+   <receiver>workmen_select_popup</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

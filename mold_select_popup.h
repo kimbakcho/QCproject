@@ -6,7 +6,7 @@
 #include <QStandardItemModel>
 #include <QSqlTableModel>
 #include <QSqlRecord>
-
+#include <QSqlDatabase>
 namespace Ui {
 class mold_select_popup;
 }
@@ -20,6 +20,7 @@ public:
     QStandardItemModel *modal;
     QSqlTableModel *sqlmodel;
     QModelIndex selectmodel;
+    QSqlDatabase remotedb;
 
     ~mold_select_popup();
 
@@ -34,6 +35,8 @@ private slots:
 
 
     void on_tableView_clicked(const QModelIndex &index);
+
+    void on_search_btn_clicked();
 
 private:
     Ui::mold_select_popup *ui;

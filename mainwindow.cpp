@@ -43,7 +43,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(MainWindowui->machinenamelistbox,SIGNAL(currentIndexChanged(QString)),this,SLOT(on_machinenamelistbox_currentIndexChanged(QString)));
 
-
 }
 
 
@@ -154,15 +153,20 @@ void MainWindow::machine_change_init(QString machinename){
     MainWindowui->item_name_label->setText(remotequery.value("item_name").toString());
     MainWindowui->item_code_label->setText(remotequery.value("item_code").toString());
     MainWindowui->works_name_label->setText(remotequery.value("worker").toString());
-    MainWindowui->orders_count_LE->setText(remotequery.value("orders_count").toString());
+
     MainWindowui->cycle_time_label->setText(remotequery.value("cycle_time").toString());
     MainWindowui->cabit_count->setText(remotequery.value("cabity").toString());
     MainWindowui->object_count_led->display(remotequery.value("object_count").toInt());
     MainWindowui->production_count_lcd->display(remotequery.value("production_count").toInt());
     MainWindowui->achievemen_rate_lcd->display(remotequery.value("achievemen_rate").toDouble());
-    MainWindowui->good_count_lcd->display(remotequery.value("good_count").toInt());
+
+    int goodcount = remotequery.value("production_count").toInt() -  remotequery.value("poor_count").toInt();
+    MainWindowui->good_count_lcd->display(goodcount);
     MainWindowui->poor_count_lcd->display(remotequery.value("poor_count").toInt());
-    MainWindowui->weight_lcd->display(remotequery.value("weight").toDouble());
+    MainWindowui->achievemen_bar->setValue(remotequery.value("achievemen_rate").toInt());
+    MainWindowui->cycle_time_label->setText(remotequery.value("cycle_time").toString());
+    MainWindowui->run_mode_label->setText(remotequery.value("run_mode").toString());
+
     tab2_tempnameinit(MainWindowui->Tab2_temp1,1);
     tab2_tempnameinit(MainWindowui->Tab2_temp2,2);
     tab2_tempnameinit(MainWindowui->Tab2_temp3,3);
@@ -214,6 +218,8 @@ void MainWindow::on_workstart_btn_clicked()
 {
     workstarttimer.start();
     workstarttimer_loop();
+    MainWindowui->workstart_btn->setEnabled(false);
+    MainWindowui->workstop_btn->setEnabled(true);
 }
 
 void MainWindow::workstarttimer_loop(){
@@ -224,14 +230,44 @@ void MainWindow::workstarttimer_loop(){
     }
 }
 void MainWindow::workplantab_loop(){
+    QSqlQuery remotequery(mdb);
+     QString querystr = QString("select * from Systeminfo where machine_name = \'%1\'")
+                                .arg(MainWindowui->machinenamelistbox->currentText());
+
+     remotequery.exec(querystr);
+     remotequery.next();
+     MainWindowui->mold_name_box->setText(remotequery.value("mold_name").toString());
+     MainWindowui->item_name_label->setText(remotequery.value("item_name").toString());
+     MainWindowui->item_code_label->setText(remotequery.value("item_code").toString());
+     MainWindowui->works_name_label->setText(remotequery.value("worker").toString());
+     MainWindowui->object_count_led->display(remotequery.value("object_count").toInt());
+     MainWindowui->production_count_lcd->display(remotequery.value("production_count").toInt());
+     MainWindowui->achievemen_rate_lcd->display(remotequery.value("achievemen_rate").toDouble());
+     MainWindowui->achievemen_bar->setValue(remotequery.value("achievemen_rate").toInt());
+     int goodcount = remotequery.value("production_count").toInt() -  remotequery.value("poor_count").toInt();
+     int poorcount = remotequery.value("poor_count").toInt();
+     MainWindowui->good_count_lcd->display(goodcount);
+     MainWindowui->poor_count_lcd->display(poorcount);
+     MainWindowui->cycle_time_label->setText(remotequery.value("cycle_time").toString());
+     MainWindowui->run_mode_label->setText(remotequery.value("run_mode").toString());
+     int object_count = remotequery.value("object_count").toInt();
+     int production_count = remotequery.value("production_count").toInt();
+     int remind_count = object_count-production_count;
+
+     QTime temptime(0,0,0);
+     QTime remind_time;
+
+     int timer = remotequery.value("cycle_time").toTime().secsTo(temptime);
+     timer = timer * -1;
+     int remind_time_sec =  remind_count * timer;
+     remind_time = temptime.addSecs(remind_time_sec);
+     MainWindowui->remind_time_label->setText(remind_time.toString("hh:mm:ss"));
+
+
 
 }
 void MainWindow::tempmonitertab_loop(){
 
-    QSqlQuery remotequery(mdb);
-    QString querystr = QString("select * from temp_table where machine_name = \'%1\'")
-                                .arg(MainWindowui->machinenamelistbox->currentText());
-    remotequery.exec(querystr);
     tab2_tempdataup(MainWindowui->Tab2_temp1->Temp_moniter1ui);
     tab2_tempdataup(MainWindowui->Tab2_temp2->Temp_moniter1ui);
     tab2_tempdataup(MainWindowui->Tab2_temp3->Temp_moniter1ui);
@@ -270,13 +306,11 @@ void MainWindow::tab2_tempdataup(Ui_Temp_moniter1 *temp_moniter){
     up_value = setting_value + up_value;
     down_value = setting_value-down_value;
     temp_moniter->setting_btn->setText(QString("%1").arg(setting_value));
-
     temp_moniter->up_btn->setText(QString("%1").arg(up_value));
     temp_moniter->down_btn->setText(QString("%1").arg(down_value));
     temp_moniter->tempSlider->setMinimum(down_value);
     temp_moniter->tempSlider->setMaximum(up_value);
     temp_moniter->tempSlider->setValue(real_value);
-
 }
 
 void MainWindow::on_mold_select_clicked()
@@ -285,7 +319,16 @@ void MainWindow::on_mold_select_clicked()
     popup.exec();
 }
 
-void MainWindow::on_mold_adder_clicked()
-{
 
+void MainWindow::on_workmenset_btn_clicked()
+{
+    workmen_select_popup popup(this);
+    popup.exec();
+}
+
+void MainWindow::on_workstop_btn_clicked()
+{
+    workstarttimer.stop();
+    MainWindowui->workstart_btn->setEnabled(true);
+    MainWindowui->workstop_btn->setEnabled(false);
 }

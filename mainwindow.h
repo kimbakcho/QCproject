@@ -14,6 +14,8 @@
 #include "ui_temp_moniter1.h"
 #include "temp_moniter1.h"
 #include "mold_select_popup.h"
+#include "workmen_select_popup.h"
+#include <QTime>
 namespace Ui {
 class MainWindow;
 }
@@ -59,7 +61,11 @@ private slots:
 
     void on_mold_select_clicked();
 
-    void on_mold_adder_clicked();
+
+
+    void on_workmenset_btn_clicked();
+
+    void on_workstop_btn_clicked();
 
 private:
 

@@ -7,6 +7,8 @@
         <file>icon/play.png</file>
         <file>icon/download.png</file>
         <file>icon/search.png</file>
+        <file>icon/stop.png</file>
+        <file>icon/warning.png</file>
     </qresource>
     <qresource prefix="/qml">
         <file>QMLtest.qml</file>
