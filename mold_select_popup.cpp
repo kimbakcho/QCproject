@@ -1,4 +1,4 @@
-#include "mold_select_popup.h"
+﻿#include "mold_select_popup.h"
 #include "ui_mold_select_popup.h"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -17,6 +17,7 @@ mold_select_popup::mold_select_popup(QWidget *parent) :
     sqlmodel->setHeaderData(0,Qt::Horizontal,QVariant(tr("금형이름")));
     sqlmodel->setHeaderData(1,Qt::Horizontal,QVariant(tr("아이템이름")));
     sqlmodel->setHeaderData(2,Qt::Horizontal,QVariant(tr("아이템코드")));
+    //브런치
 }
 
 mold_select_popup::~mold_select_popup()
