@@ -18,7 +18,7 @@ mold_select_popup::mold_select_popup(QWidget *parent) :
     sqlmodel->setHeaderData(1,Qt::Horizontal,QVariant(tr("아이템이름")));
     sqlmodel->setHeaderData(2,Qt::Horizontal,QVariant(tr("아이템코드")));
 
-    //테스트
+    //테스트123123123
 
 }
 
